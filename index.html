@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sala de control — Vivero Umbral</title>
+<meta name="description" content="Panel de control ambiental del invernadero Vivero Umbral: sensores de clima, estado de las zonas de cultivo y calendario de cosechas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+<div class="layout" id="layout">
+
+  <!-- BARRA LATERAL -->
+  <aside class="sidebar" id="sidebar" aria-label="Navegacion del sistema de control">
+
+    <div class="brand-block">
+      <svg class="brand-mark" viewBox="0 0 40 40" width="34" height="34" aria-hidden="true">
+        <path d="M20 3 35 11.5v17L20 37 5 28.5v-17Z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+        <path d="M20 13c4 2.5 6 6 6 10a6 6 0 1 1-12 0c0-4 2-7.5 6-10Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+      </svg>
+      <div class="brand-text">
+        <strong>Vivero Umbral</strong>
+        <small>Sala de control</small>
+      </div>
+      <button class="collapse-btn" id="collapseBtn" type="button" aria-label="Contraer barra lateral" aria-expanded="true" aria-controls="sidebar">
+        <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M10 2 4 8l6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+    <nav aria-label="Secciones del sistema">
+      <ul class="nav-list">
+        <li>
+          <a href="#main-content" class="nav-link is-active" aria-current="page">
+            <svg class="nav-link__icon" viewBox="0 0 18 18" width="18" height="18" aria-hidden="true"><rect x="2.5" y="9" width="3" height="6.5" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="7.5" y="5" width="3" height="10.5" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="12.5" y="2.5" width="3" height="13" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+            <span class="nav-link__text">Resumen operativo</span>
+          </a>
+        </li>
+        <li>
+          <a href="#zonas" class="nav-link">
+            <svg class="nav-link__icon" viewBox="0 0 18 18" width="18" height="18" aria-hidden="true"><path d="M2.5 6 9 2.5 15.5 6v6L9 15.5 2.5 12Z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+            <span class="nav-link__text">Zonas de cultivo</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link">
+            <svg class="nav-link__icon" viewBox="0 0 18 18" width="18" height="18" aria-hidden="true"><path d="M9 2.5v5.7M9 8.2 13.5 5M9 8.2 4.5 5M9 8.2v7.3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <span class="nav-link__text">Cosechas</span>
+          </a>
+        </li>
+        <li>
+          <a href="#lecturas" class="nav-link">
+            <svg class="nav-link__icon" viewBox="0 0 18 18" width="18" height="18" aria-hidden="true"><path d="M2.5 10.5h3l1.8-5 2.8 9 1.9-6.5 1.4 2.5h2.1" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="nav-link__text">Sensores</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link">
+            <svg class="nav-link__icon" viewBox="0 0 18 18" width="18" height="18" aria-hidden="true"><rect x="3" y="4" width="12" height="10" rx=".5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M3 7.2h12" stroke="currentColor" stroke-width="1.1"/></svg>
+            <span class="nav-link__text">Pedidos</span>
+            <span class="nav-link__count">9</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link">
+            <svg class="nav-link__icon" viewBox="0 0 18 18" width="18" height="18" aria-hidden="true"><path d="M3.5 14V6M9 14V3M14.5 14v-4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            <span class="nav-link__text">Reportes</span>
+          </a>
+        </li>
+      </ul>
+
+      <p class="nav-divider-label">Cuenta</p>
+      <ul class="nav-list">
+        <li>
+          <a href="#" class="nav-link">
+            <svg class="nav-link__icon" viewBox="0 0 18 18" width="18" height="18" aria-hidden="true"><circle cx="9" cy="9" r="2.3" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M9 3v1.6M9 13.4V15M15 9h-1.6M4.6 9H3M13 5l-1.1 1.1M6.1 11.9 5 13M13 13l-1.1-1.1M6.1 6.1 5 5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
+            <span class="nav-link__text">Configuracion</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link">
+            <svg class="nav-link__icon" viewBox="0 0 18 18" width="18" height="18" aria-hidden="true"><path d="M7.5 3.5h-3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h3" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M11 6l3 3-3 3M14 9H6.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="nav-link__text">Cerrar sesion</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-status">
+      <span class="sidebar-status__dot" aria-hidden="true"></span>
+      <div>
+        <p>Sistema activo — 6 zonas en linea</p>
+        <p class="sidebar-status__meta">Última lectura hace 12 s</p>
+      </div>
+    </div>
+  </aside>
+
+  <!--  ENCABEZADO -->
+  <header class="topbar" role="banner">
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir navegación" aria-expanded="false" aria-controls="sidebar">
+      <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+
+    <div class="topbar__title">
+      <h1>Resumen operativo</h1>
+      <p>Jueves 3 de septiembre, 11:48</p>
+    </div>
+
+    <div class="console-search">
+      <span aria-hidden="true">&gt;</span>
+      <label for="search-input" class="visually-hidden">Buscar zona, sensor o lote</label>
+      <input type="search" id="search-input" placeholder="buscar zona, sensor o lote">
+    </div>
+
+    <div class="topbar__actions">
+      <button class="bell" type="button" aria-label="Notificaciones, 3 sin leer">
+        <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M9 2a4 4 0 0 0-4 4v2.3c0 .6-.2 1.2-.6 1.7L3 12h12l-1.4-2c-.4-.5-.6-1.1-.6-1.7V6a4 4 0 0 0-4-4Z" stroke="currentColor" stroke-width="1.3" fill="none" stroke-linejoin="round"/><path d="M7 14.3a2 2 0 0 0 4 0" stroke="currentColor" stroke-width="1.3" fill="none"/></svg>
+        <span class="bell__dot" aria-hidden="true"></span>
+      </button>
+      <div class="operator-badge" aria-hidden="true">KP</div>
+      <span class="operator-name"><strong>Kevin Pineda</strong><small>Operador de turno</small></span>
+    </div>
+  </header>
+
+  <div class="sidebar-overlay" id="sidebarOverlay" hidden></div>
+
+  <!--  CONTENIDO PRINCIPAL -->
+  <main class="main" id="main-content" role="main" tabindex="-1">
+
+    <!-- Gauges radiales de sensores -->
+    <section class="gauges" aria-label="Lecturas ambientales actuales">
+
+      <article class="gauge-card">
+        <svg class="gauge" viewBox="0 0 100 100" role="img" aria-label="Temperatura: 24,6 grados centígrados, dentro del rango normal de 22 a 26 grados">
+          <circle cx="50" cy="50" r="42" class="gauge__track"/>
+          <circle cx="50" cy="50" r="42" class="gauge__value gauge__value--ok" stroke-dasharray="264" stroke-dashoffset="85"/>
+        </svg>
+        <div class="gauge-card__readout">
+          <p class="gauge-card__value">24.6<span>°C</span></p>
+          <p class="gauge-card__label">Temperatura</p>
+          <p class="gauge-card__range">rango 22–26 °C</p>
+        </div>
+      </article>
+
+      <article class="gauge-card">
+        <svg class="gauge" viewBox="0 0 100 100" role="img" aria-label="Humedad relativa: 71 por ciento, cerca del límite superior del rango de 60 a 75 por ciento">
+          <circle cx="50" cy="50" r="42" class="gauge__track"/>
+          <circle cx="50" cy="50" r="42" class="gauge__value gauge__value--warn" stroke-dasharray="264" stroke-dashoffset="40"/>
+        </svg>
+        <div class="gauge-card__readout">
+          <p class="gauge-card__value">71<span>%HR</span></p>
+          <p class="gauge-card__label">Humedad relativa</p>
+          <p class="gauge-card__range">rango 60–75%</p>
+        </div>
+      </article>
+
+      <article class="gauge-card">
+        <svg class="gauge" viewBox="0 0 100 100" role="img" aria-label="Dioxido de carbono: 812 partes por millon, dentro del rango normal de 600 a 900">
+          <circle cx="50" cy="50" r="42" class="gauge__track"/>
+          <circle cx="50" cy="50" r="42" class="gauge__value gauge__value--ok" stroke-dasharray="264" stroke-dashoffset="79"/>
+        </svg>
+        <div class="gauge-card__readout">
+          <p class="gauge-card__value">812<span>ppm</span></p>
+          <p class="gauge-card__label">CO₂</p>
+          <p class="gauge-card__range">rango 600–900 ppm</p>
+        </div>
+      </article>
+
+      <article class="gauge-card">
+        <svg class="gauge" viewBox="0 0 100 100" role="img" aria-label="Conductividad electrica: 1,6 militsiemens por centimetro, por debajo del rango objetivo de 1,8 a 2,2">
+          <circle cx="50" cy="50" r="42" class="gauge__track"/>
+          <circle cx="50" cy="50" r="42" class="gauge__value gauge__value--warn" stroke-dasharray="264" stroke-dashoffset="160"/>
+        </svg>
+        <div class="gauge-card__readout">
+          <p class="gauge-card__value">1.6<span>mS/cm</span></p>
+          <p class="gauge-card__label">Conductividad (EC)</p>
+          <p class="gauge-card__range">objetivo 1,8–2,2</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="content-grid">
+
+      <!-- Grafico de series de tiempo tipo osciloscopio -->
+      <article class="panel chart-panel" aria-labelledby="chart-title" id="lecturas">
+        <div class="panel__head">
+          <div>
+            <h2 id="chart-title">Clima de la zona B1 · últimas 24 h</h2>
+            <p class="panel__meta">Sensores TH-04 y TH-05</p>
+          </div>
+          <div class="chart-legend">
+            <span><i class="swatch swatch--temp"></i>Temperatura</span>
+            <span><i class="swatch swatch--hum"></i>Humedad</span>
+          </div>
+        </div>
+
+        <svg class="scope" viewBox="0 0 640 220" role="img" aria-label="Temperatura y humedad de la zona B1 en las últimas 24 horas. La temperatura se mantuvo entre 21 y 26 grados, con un pico a media tarde. La humedad osciló entre 58 y 74 por ciento, subiendo durante la noche.">
+          <g class="scope__grid">
+            <line x1="0" y1="36" x2="640" y2="36"/>
+            <line x1="0" y1="80" x2="640" y2="80"/>
+            <line x1="0" y1="124" x2="640" y2="124"/>
+            <line x1="0" y1="168" x2="640" y2="168"/>
+            <line x1="80" y1="0" x2="80" y2="220"/>
+            <line x1="220" y1="0" x2="220" y2="220"/>
+            <line x1="360" y1="0" x2="360" y2="220"/>
+            <line x1="500" y1="0" x2="500" y2="220"/>
+          </g>
+          <path class="scope__line scope__line--hum" d="M10,110 C90,124 150,150 220,140 C300,128 360,150 430,158 C500,164 560,120 630,96" fill="none"/>
+          <path class="scope__line scope__line--temp" d="M10,150 C90,140 150,120 220,96 C300,68 360,50 430,44 C500,52 560,80 630,104" fill="none"/>
+        </svg>
+        <div class="scope__axis">
+          <span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>24:00</span>
+        </div>
+      </article>
+
+      <!-- Registro de alarmas -->
+      <article class="panel log-panel" aria-labelledby="log-title">
+        <div class="panel__head">
+          <div>
+            <h2 id="log-title">Registro de alarmas</h2>
+            <p class="panel__meta">Últimas 12 horas</p>
+          </div>
+        </div>
+        <ul class="log-list">
+          <li class="log-item is-critical">
+            <span class="log-item__time">10:42</span>
+            <span class="log-item__text">EC baja en zona C1 — ajustar solución nutritiva</span>
+          </li>
+          <li class="log-item is-warn">
+            <span class="log-item__time">09:15</span>
+            <span class="log-item__text">Humedad alta en zona A2, sobre el límite superior</span>
+          </li>
+          <li class="log-item is-ok">
+            <span class="log-item__time">07:03</span>
+            <span class="log-item__text">Sensor de CO₂ zona B1 reconectado tras corte breve</span>
+          </li>
+          <li class="log-item is-ok">
+            <span class="log-item__time">05:50</span>
+            <span class="log-item__text">Riego automatico completado en zonas A1 y B2</span>
+          </li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- Zonas de cultivo -->
+    <section class="panel table-panel" aria-labelledby="table-title" id="zonas">
+      <div class="panel__head">
+        <div>
+          <h2 id="table-title">Zonas de cultivo</h2>
+          <p class="panel__meta">6 zonas activas</p>
+        </div>
+        <div class="panel__filter">
+          <label for="filter-status">Estado</label>
+          <select id="filter-status">
+            <option>Todos</option>
+            <option>Normal</option>
+            <option>Atención</option>
+            <option>Crítico</option>
+            <option>Listo para cosecha</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-scroll">
+        <table>
+          <caption class="visually-hidden">Zonas de cultivo con especie, etapa, dias a cosecha, estado y proxima accion</caption>
+          <thead>
+            <tr>
+              <th scope="col">Zona</th>
+              <th scope="col">Cultivo</th>
+              <th scope="col">Etapa</th>
+              <th scope="col">Dias a cosecha</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Proxima accion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Zona">A1</td>
+              <td data-label="Cultivo">Lechuga mantecosa</td>
+              <td data-label="Etapa">Vegetativo</td>
+              <td data-label="Dias a cosecha">12</td>
+              <td data-label="Estado"><span class="tag tag--ok">Normal</span></td>
+              <td data-label="Proxima accion">Revisar EC</td>
+            </tr>
+            <tr>
+              <td data-label="Zona">A2</td>
+              <td data-label="Cultivo">Albahaca genovesa</td>
+              <td data-label="Etapa">Enraizamiento</td>
+              <td data-label="Dias a cosecha">5</td>
+              <td data-label="Estado"><span class="tag tag--warn">Atencion</span></td>
+              <td data-label="Proxima accion">Bajar humedad</td>
+            </tr>
+            <tr>
+              <td data-label="Zona">B1</td>
+              <td data-label="Cultivo">Fresas</td>
+              <td data-label="Etapa">Floracion</td>
+              <td data-label="Dias a cosecha">21</td>
+              <td data-label="Estado"><span class="tag tag--ok">Normal</span></td>
+              <td data-label="Proxima accion">Polinizacion manual</td>
+            </tr>
+            <tr>
+              <td data-label="Zona">B2</td>
+              <td data-label="Cultivo">Microgreens de rabano</td>
+              <td data-label="Etapa">Cosecha</td>
+              <td data-label="Dias a cosecha">0</td>              <td data-label="Estado"><span class="tag tag--ready">Listo</span></td>
+              <td data-label="Proxima accion">Cosechar hoy</td>
+            </tr>
+            <tr>
+              <td data-label="Zona">C1</td>
+              <td data-label="Cultivo">Tomate cherry</td>
+              <td data-label="Etapa">Fructificacion</td>
+              <td data-label="Dias a cosecha">34</td>
+              <td data-label="Estado"><span class="tag tag--critical">Critico</span></td>
+              <td data-label="Proxima accion">Inspeccion fitosanitaria</td>
+            </tr>
+            <tr>
+              <td data-label="Zona">C2</td>
+              <td data-label="Cultivo">Espinaca baby</td>
+              <td data-label="Etapa">Vegetativo</td>
+              <td data-label="Dias a cosecha">9</td>
+              <td data-label="Estado"><span class="tag tag--ok">Normal</span></td>
+              <td data-label="Proxima accion">Ninguna</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- PIE -->
+  <footer class="site-footer" role="contentinfo">
+    <p>Vivero Umbral — Sistema de control ambiental v2.3</p>
+    <nav aria-label="Enlaces del pie de pagina">
+      <ul>
+        <li><a href="#">Manual de sensores</a></li>
+        <li><a href="#">Soporte tecnico</a></li>
+        <li><a href="#">Estado del sistema</a></li>
+      </ul>
+    </nav>
+    <p class="site-footer__sync">Actividad continua: 214 dias</p>
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
